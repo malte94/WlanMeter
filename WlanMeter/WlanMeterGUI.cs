@@ -33,6 +33,7 @@ namespace WlanMeter
         {
             this.Opacity = 0.9;
             this.Location = new Point(screenWidth - this.Size.Width - 0, screenHeight - this.Size.Height - taskBarHeight - 0);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.keyRightMouseButton);
             Heartbeat();
         }
 
@@ -70,6 +71,29 @@ namespace WlanMeter
         private void RefreshSignalStrength(Object source, ElapsedEventArgs e)
         {
             lblSignal.Invoke(new MethodInvoker(delegate { lblSignal.Text = getSignalStrength(); }));
+        }
+
+        private void keyRightMouseButton(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(Cursor.Position);
+            }
+        }
+
+        private void lblSignal_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs m = (MouseEventArgs) e;
+
+            if (m.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(Cursor.Position);
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

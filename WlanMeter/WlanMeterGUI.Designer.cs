@@ -29,9 +29,13 @@ namespace WlanMeter
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.imgSignal = new System.Windows.Forms.PictureBox();
             this.lblSignal = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.imgSignal)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgSignal
@@ -57,6 +61,26 @@ namespace WlanMeter
             this.lblSignal.TabIndex = 1;
             this.lblSignal.Text = "100%";
             this.lblSignal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblSignal.Click += new System.EventHandler(this.lblSignal_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.contextMenuStrip1.Font = new System.Drawing.Font("Segoe UI", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(140, 50);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(139, 46);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // WlanMeterGUI
             // 
@@ -70,6 +94,7 @@ namespace WlanMeter
             this.Text = "Wlan";
             this.Load += new System.EventHandler(this.WlanMeterGUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgSignal)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -78,6 +103,8 @@ namespace WlanMeter
 
         private System.Windows.Forms.PictureBox imgSignal;
         private System.Windows.Forms.Label lblSignal;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 
