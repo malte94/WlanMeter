@@ -61,15 +61,6 @@ namespace WlanMeter.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die (netsh wlan show interfaces) -Match &apos;^\s+Signal&apos; -Replace &apos;^\s+Signal\s+:\s+&apos;,&apos;&apos; ähnelt.
-        /// </summary>
-        internal static string script {
-            get {
-                return ResourceManager.GetString("script", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap signal {
