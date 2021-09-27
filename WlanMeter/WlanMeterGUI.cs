@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Management.Automation;
 using System.Collections.ObjectModel;
-using System.Management.Automation.Runspaces;
-using Microsoft.PowerShell;
-using System.IO;
 using System.Timers;
 using System.Text.RegularExpressions;
+using Microsoft.Win32;
 
 namespace WlanMeter
 {
@@ -31,10 +23,29 @@ namespace WlanMeter
 
         private void WlanMeterGUI_Load(object sender, EventArgs e)
         {
-            this.Opacity = 0.9;
-            this.Location = new Point(screenWidth - this.Size.Width - 0, screenHeight - this.Size.Height - taskBarHeight - 0);
+            this.ClientSize = new Size(100, 75); // Form Size Correction
+            this.Opacity = 0.8;
+            this.Location = new Point(screenWidth - this.Size.Width, screenHeight - this.Size.Height - taskBarHeight - 0);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.keyRightMouseButton);
+            // Read settings
+            if (Properties.Settings.Default.autostart == false)
+            {
+                autostartEnabledToolStripMenuItem.Checked = false;
+            } else
+            {
+                autostartEnabledToolStripMenuItem.Checked = true;
+            }
             Heartbeat();
+        }
+
+        private void guiMouseEnter(object sender, EventArgs e)
+        {
+            this.Opacity = 1;
+        }
+
+        private void guiMouseLeave(object sender, EventArgs e)
+        {
+            this.Opacity = 0.8;
         }
 
         private string getSignalStrength()
@@ -94,6 +105,35 @@ namespace WlanMeter
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        private void autostartEnabledToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (autostartEnabledToolStripMenuItem.Checked == true)
+            {
+                autostartEnabledToolStripMenuItem.Checked = false;
+                Properties.Settings.Default.autostart = false;
+            }
+            else
+            {
+                autostartEnabledToolStripMenuItem.Checked = true;
+                Properties.Settings.Default.autostart = true;
+            }
+            Properties.Settings.Default.Save();
+            SetStartup();
+        }
+
+        private void SetStartup()
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (Properties.Settings.Default.autostart == true)
+            {
+                rk.SetValue("Wlan Meter", Application.ExecutablePath);
+            }
+            else
+            {
+                rk.DeleteValue("Wlan Meter", false);
+            }
         }
     }
 }
