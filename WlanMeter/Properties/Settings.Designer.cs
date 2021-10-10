@@ -34,5 +34,17 @@ namespace WlanMeter.Properties {
                 this["autostart"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool win11 {
+            get {
+                return ((bool)(this["win11"]));
+            }
+            set {
+                this["win11"] = value;
+            }
+        }
     }
 }

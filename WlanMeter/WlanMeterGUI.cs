@@ -14,7 +14,8 @@ namespace WlanMeter
 
         private int screenWidth = Screen.PrimaryScreen.Bounds.Width;
         private int screenHeight = Screen.PrimaryScreen.Bounds.Height;
-        private int taskBarHeight = 80;
+        private int taskBarHeight;
+
         private static System.Timers.Timer heartbeat;
         public WlanMeterGUI()
         {
@@ -25,7 +26,6 @@ namespace WlanMeter
         {
             this.ClientSize = new Size(100, 75); // Form Size Correction
             this.Opacity = 0.8;
-            this.Location = new Point(screenWidth - this.Size.Width, screenHeight - this.Size.Height - taskBarHeight - 0);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.keyRightMouseButton);
             // Read settings
             if (Properties.Settings.Default.autostart == false)
@@ -35,6 +35,19 @@ namespace WlanMeter
             {
                 autostartEnabledToolStripMenuItem.Checked = true;
             }
+
+            if (Properties.Settings.Default.win11 == false)
+            {
+                windows11ToolStripMenuItem.Checked = false;
+                this.taskBarHeight = 80;
+            } else
+            {
+                windows11ToolStripMenuItem.Checked = true;
+                this.taskBarHeight = 90;
+            }
+            // Init GUI
+            this.Location = new Point(screenWidth - this.Size.Width, screenHeight - this.Size.Height - taskBarHeight - 0);
+            // Init Tick
             Heartbeat();
         }
 
@@ -102,6 +115,8 @@ namespace WlanMeter
             }
         }
 
+        // Context Menu
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -121,6 +136,27 @@ namespace WlanMeter
             Properties.Settings.Default.Save();
             SetStartup();
         }
+
+        private void windows11ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (windows11ToolStripMenuItem.Checked == true)
+            {
+                windows11ToolStripMenuItem.Checked = false;
+                Properties.Settings.Default.win11 = false;
+                this.taskBarHeight = 80;
+                this.Location = new Point(screenWidth - this.Size.Width, screenHeight - this.Size.Height - taskBarHeight - 0);
+            }
+            else
+            {
+                windows11ToolStripMenuItem.Checked = true;
+                Properties.Settings.Default.win11 = true;
+                this.taskBarHeight = 90;
+                this.Location = new Point(screenWidth - this.Size.Width, screenHeight - this.Size.Height - taskBarHeight - 0);
+            }
+            Properties.Settings.Default.Save();
+        }
+
+        // Autostart
 
         private void SetStartup()
         {

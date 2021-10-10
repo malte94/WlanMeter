@@ -34,6 +34,7 @@ namespace WlanMeter
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.autostartEnabledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windows11ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,14 +62,15 @@ namespace WlanMeter
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.autostartEnabledToolStripMenuItem,
+            this.windows11ToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(214, 96);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(301, 186);
             // 
             // autostartEnabledToolStripMenuItem
             // 
             this.autostartEnabledToolStripMenuItem.Name = "autostartEnabledToolStripMenuItem";
-            this.autostartEnabledToolStripMenuItem.Size = new System.Drawing.Size(213, 46);
+            this.autostartEnabledToolStripMenuItem.Size = new System.Drawing.Size(300, 46);
             this.autostartEnabledToolStripMenuItem.Text = "Autostart";
             this.autostartEnabledToolStripMenuItem.Click += new System.EventHandler(this.autostartEnabledToolStripMenuItem_Click);
             // 
@@ -77,9 +79,16 @@ namespace WlanMeter
             this.exitToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlLight;
             this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(213, 46);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(300, 46);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // windows11ToolStripMenuItem
+            // 
+            this.windows11ToolStripMenuItem.Name = "windows11ToolStripMenuItem";
+            this.windows11ToolStripMenuItem.Size = new System.Drawing.Size(300, 46);
+            this.windows11ToolStripMenuItem.Text = "Windows 11";
+            this.windows11ToolStripMenuItem.Click += new System.EventHandler(this.windows11ToolStripMenuItem_Click);
             // 
             // WlanMeterGUI
             // 
@@ -109,6 +118,7 @@ namespace WlanMeter
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autostartEnabledToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem windows11ToolStripMenuItem;
     }
 }
 
